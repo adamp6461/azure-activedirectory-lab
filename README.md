@@ -1,3 +1,5 @@
+nano README.md
+
 # Public Cloud Enterprise Lab: Automated Windows Server Core, Active Directory, & Identity Management Pipeline
 
 ## Project Overview
@@ -41,8 +43,11 @@ Following the system restart, the server was accessed via native PowerShell to b
 Executed the following cmdlet to query Microsoft Update repositories, downloading and extracting all core Active Directory binaries and corresponding deployment automation tools:
 ```powershell
 Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+
 Install-ADDSForest -DomainName "securitylab.local"
+
 New-ADOrganizationalUnit -Name "Staff" -Path "DC=securitylab,DC=local"
+
 # Define target enterprise user identities using custom object arrays
 $Users = @(
     [PSCustomObject]@{FirstName="John"; LastName="Doe"; Username="jdoe"},
@@ -64,5 +69,6 @@ foreach ($User in $Users) {
                -ChangePasswordAtLogon $true `
                -Enabled $true
 }
+
 Get-ADUser -Filter * -SearchBase "OU=Staff,DC=securitylab,DC=local" | Select-Object Name, SamAccountName, Enabled
 
