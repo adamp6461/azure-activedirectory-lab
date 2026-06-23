@@ -155,22 +155,41 @@ Install-ADDSForest `
 
 ## Screenshots
 
+## Screenshots
+
 ### Azure Virtual Machine Deployment
 
-*Coming Soon*
+![Azure VM](screenshots/Azure-VM-Overview.png)
 
-### Active Directory Domain Services Installation
+## Step 1: Provision Windows Server Core in Azure
 
-*Coming Soon*
+Created a Windows Server 2022 Core VM in Microsoft Azure to serve as the future Domain Controller for the lab environment.
 
-### Organizational Unit Structure
+### Server Core Initial Configuration
 
-*Coming Soon*
+![Server Core](screenshots/Server-core-int-config.png)
 
-### User Provisioning Automation
+## Step 2: Initial Server Core Configuration
 
-*Coming Soon*
+Configured the Windows Server Core instance through PowerShell, preparing the system for Active Directory installation.
 
+
+### Active Directory Forest Deployment
+
+![AD Deployment](screenshots/AD-forest-deployment.png)
+
+## Step 4: Create Active Directory Forest
+
+Promoted the server to a Domain Controller and created the securitylab.local forest using PowerShell.
+
+### Domain Controller Validation
+
+![Domain Validation](screenshots/ad-verify)
+
+
+## Step 5: Validate Active Directory Deployment
+
+Verified successful Domain Controller deployment and confirmed forest/domain functionality using PowerShell.
 ---
 
 ## Key Takeaways
