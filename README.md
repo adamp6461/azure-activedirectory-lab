@@ -1,5 +1,34 @@
 nano README.md
+# Public Cloud Enterprise Lab: Automated Windows Server Core, Active Directory, & Identity Management Pipeline
 
+## Project Overview
+This repository documents the end-to-end architectural deployment of an enterprise-grade **Windows Server 2022 Datacenter (Server Core)** infrastructure inside **Microsoft Azure**.
+
+To maximize operational efficiency, reduce the attack surface, and emulate modern DevOps/SysAdmin data center practices, the entire infrastructure was provisioned and configured **exclusively via the command line (PowerShell & SConfig)**, completely bypassing standard graphical user interfaces (GUIs).
+
+Additionally, this lab demonstrates automated identity lifecycle management by leveraging programmatic scripting pipelines to stand up a brand-new directory forest and batch-provision enterprise user objects.
+
+---
+
+## Deep-Dive Deployment Documentation
+
+### Phase 1: Cloud Infrastructure Provisioning (Azure IaaS)
+1. Provisioned a clean compute instance using resource-optimized parameters inside Microsoft Azure.
+2. Formulated and deployed a Virtual Machine utilizing the following specifications:
+    * **Virtual Machine Name:** `WinServer-Core-01`
+    * **Hardware Tier:** `Standard_B2ats_v2` (2 vCPUs, 1 GB RAM — Free Services Eligible)
+    * **Operating System Image:** `[smalldisk] Windows Server 2022 Datacenter: Azure Edition Core - x64 Gen2`
+    * **Firewall / Network Security Group:** Locked down access parameters via explicit **RDP (Port 3389)** inbound binding.
+
+### Phase 2: Host Standardization & NetBIOS Refactoring (SConfig)
+1. Converted the volatile, randomized Azure host string to a structured corporate scheme: `WinServer-01`.
+2. Initiated a programmatic system reboot to apply architectural shifts.
+
+### Phase 3: Active Directory Domain Services (AD DS) Automation
+
+#### 1. Binary Feature Package Extraction
+```powershell
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 # Public Cloud Enterprise Lab: Automated Windows Server Core, Active Directory, & Identity Management Pipeline
 
 ## Project Overview
@@ -71,4 +100,32 @@ foreach ($User in $Users) {
 }
 
 Get-ADUser -Filter * -SearchBase "OU=Staff,DC=securitylab,DC=local" | Select-Object Name, SamAccountName, Enabled
+
+Install-ADDSForest -DomainName "securitylab.local"
+
+New-ADOrganizationalUnit -Name "Staff" -Path "DC=securitylab,DC=local"
+
+# Define target enterprise user identities using custom object arrays
+$Users = @(
+    [PSCustomObject]@{FirstName="John"; LastName="Doe"; Username="jdoe"},
+    [PSCustomObject]@{FirstName="Jane"; LastName="Smith"; Username="jsmith"}
+)
+
+# Enforce secure baseline default credentials
+$SecurePassword = ConvertTo-SecureString "InitialP@ss2026!" -AsPlainText -Force
+
+# Execute logical configuration loop to provision and inject accounts into the directory database
+foreach ($User in $Users) {
+    New-ADUser -Name "$($User.FirstName) $($User.LastName)" `
+               -GivenName $User.FirstName `
+               -Surname $User.LastName `
+               -SamAccountName $User.Username `
+               -UserPrincipalName "$($User.Username)@securitylab.local" `
+               -Path "OU=Staff,DC=securitylab,DC=local" `
+               -AccountPassword $SecurePassword `
+               -ChangePasswordAtLogon $true `
+               -Enabled $true
+}
+
+Get-ADUser -Filter * -SearchBase "OU=Staff,DC=securitylab,DC=local" | Select-Object Name, SamAccountName, EnableGet-ADUser -Filter * -SearchBase "OU=Staff,DC=securitylab,DC=local" | Select-Object Name, SamAccountName, Enabled
 
