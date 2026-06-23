@@ -8,6 +8,14 @@ The environment was deployed using Windows Server Datacenter (Server Core) and c
 
 ---
 
+## Business Scenario
+
+AP Technology Group, a simulated 250-user organization, required a centralized identity management platform to support user authentication, administrative delegation, and future policy enforcement.
+
+This lab deployed a cloud-hosted Active Directory environment to provide a scalable foundation for user lifecycle management and enterprise systems administration.
+
+---
+
 ## Environment
 
 ### Cloud Platform
@@ -43,11 +51,12 @@ securitylab.local
 ## Technologies Used
 
 * Microsoft Azure
-* Windows Server Datacenter
+* Windows Server Datacenter (Server Core)
 * Active Directory Domain Services (AD DS)
 * PowerShell
 * Windows Firewall
-* Active Directory Users and Computers
+* DNS
+* Azure Virtual Machines
 * Organizational Units (OUs)
 
 ---
@@ -105,6 +114,31 @@ Tasks included:
 
 ---
 
+## PowerShell Examples
+
+### Rename Server
+
+```powershell
+Rename-Computer -NewName "DC01" -Restart
+```
+
+### Install Active Directory Domain Services
+
+```powershell
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+```
+
+### Promote Server to Domain Controller
+
+```powershell
+Install-ADDSForest `
+-DomainName "securitylab.local" `
+-InstallDNS `
+-Force
+```
+
+---
+
 ## Skills Demonstrated
 
 * Active Directory Administration
@@ -116,6 +150,26 @@ Tasks included:
 * User Lifecycle Management
 * Infrastructure Deployment
 * Systems Administration
+
+---
+
+## Screenshots
+
+### Azure Virtual Machine Deployment
+
+*Coming Soon*
+
+### Active Directory Domain Services Installation
+
+*Coming Soon*
+
+### Organizational Unit Structure
+
+*Coming Soon*
+
+### User Provisioning Automation
+
+*Coming Soon*
 
 ---
 
@@ -134,4 +188,3 @@ This lab provided hands-on experience deploying and administering a cloud-hosted
 * Remote Administration Tools
 * PowerShell User Lifecycle Automation
 * Active Directory Auditing and Monitoring
-
