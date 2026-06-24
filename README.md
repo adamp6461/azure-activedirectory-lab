@@ -1,209 +1,48 @@
-# Active Directory Lab - Azure Domain Controller Deployment
+# Screenshots
 
-## Overview
+## 1. Azure Virtual Machine Configuration
 
-This project demonstrates the deployment and administration of a Windows Server Active Directory environment hosted in Microsoft Azure. The lab was designed to simulate enterprise identity management operations while reinforcing Active Directory, PowerShell automation, and cloud infrastructure administration skills.
+Created and configured a Windows Server 2022 virtual machine in Microsoft Azure. The VM was deployed using a free-tier eligible size and configured for Remote Desktop access.
 
-The environment was deployed using Windows Server Datacenter (Server Core) and configured primarily through PowerShell to reduce reliance on graphical administration tools.
-
----
-
-## Business Scenario
-
-AP Technology Group, a simulated 250-user organization, required a centralized identity management platform to support user authentication, administrative delegation, and future policy enforcement.
-
-This lab deployed a cloud-hosted Active Directory environment to provide a scalable foundation for user lifecycle management and enterprise systems administration.
+![Step 1 - Azure Virtual Machine Configuration](screenshots/step-1.png)
 
 ---
 
-## Environment
+## 2. Virtual Machine Deployment Verification
 
-### Cloud Platform
+Validated successful deployment of the Azure virtual machine and confirmed resource creation within the Azure Portal.
 
-* Microsoft Azure
-* Azure Virtual Machine Infrastructure
-
-### Server
-
-* Windows Server Datacenter (Server Core)
-* Forest Root Domain Controller
-
-### Domain
-
-```text
-securitylab.local
-```
+![Step 2 - VM Deployment Verification](screenshots/step-2.png)
 
 ---
 
-## Project Objectives
+## 3. Active Directory Domain Services Installation
 
-* Deploy a Windows Server instance in Microsoft Azure
-* Configure a secure server baseline using PowerShell
-* Install Active Directory Domain Services (AD DS)
-* Promote a server to a Domain Controller
-* Create and manage Organizational Units (OUs)
-* Automate user provisioning through PowerShell
-* Develop foundational enterprise identity management skills
-
----
-
-## Technologies Used
-
-* Microsoft Azure
-* Windows Server Datacenter (Server Core)
-* Active Directory Domain Services (AD DS)
-* PowerShell
-* Windows Firewall
-* DNS
-* Azure Virtual Machines
-* Organizational Units (OUs)
-
----
-
-## Implementation
-
-### Server Provisioning
-
-A Windows Server Datacenter virtual machine was deployed within Microsoft Azure using a lightweight Server Core image to minimize resource consumption and reduce attack surface.
-
-### PowerShell Administration
-
-Administrative tasks were performed through PowerShell, including:
-
-* Server renaming
-* Network configuration
-* Firewall management
-* Feature installation
-* Active Directory deployment
-
-### Active Directory Deployment
-
-The Active Directory Domain Services role was installed and configured. The server was promoted to a Forest Root Domain Controller for the following domain:
-
-```text
-securitylab.local
-```
-
-### Organizational Unit Structure
-
-The following Organizational Units were created to simulate an enterprise environment:
-
-```text
-SecurityLab.local
-│
-├── Information Technology
-├── Human Resources
-├── Finance
-├── Sales
-├── Marketing
-└── Workstations
-```
-
-### User Provisioning Automation
-
-PowerShell scripting was used to automate user creation and account activation.
-
-Tasks included:
-
-* User object creation
-* Password assignment
-* Account enablement
-* OU placement
-* Batch provisioning through looping structures
-
----
-
-## PowerShell Examples
-
-### Rename Server
+Installed the Active Directory Domain Services (AD DS) role and promoted the server to a domain controller for the new forest.
 
 ```powershell
-Rename-Computer -NewName "DC01" -Restart
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+Install-ADDSForest -DomainName "securitylab.local"
 ```
 
-### Install Active Directory Domain Services
+![Step 3 - AD DS Installation](screenshots/step-3.png)
+
+---
+
+## 4. Active Directory Validation
+
+Verified successful domain controller promotion and Active Directory functionality using PowerShell.
 
 ```powershell
-Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+Get-ADForest
 ```
 
-### Promote Server to Domain Controller
-
-```powershell
-Install-ADDSForest `
--DomainName "securitylab.local" `
--InstallDNS `
--Force
-```
+![Step 4 - Active Directory Validation](screenshots/step-4.png)
 
 ---
 
-## Skills Demonstrated
+## 5. Domain Controller Operational State
 
-* Active Directory Administration
-* Microsoft Azure Infrastructure
-* Windows Server Management
-* PowerShell Automation
-* Identity and Access Management (IAM)
-* Organizational Unit Design
-* User Lifecycle Management
-* Infrastructure Deployment
-* Systems Administration
+Confirmed the server was successfully operating as the domain controller for the newly created Active Directory forest.
 
----
-
-## Screenshots
-
-## Screenshots
-
-### Azure Virtual Machine Deployment
-
-![Azure VM](screenshots/Azure-VM-Overview.png)
-
-## Step 1: Provision Windows Server Core in Azure
-
-Created a Windows Server 2022 Core VM in Microsoft Azure to serve as the future Domain Controller for the lab environment.
-
-### Server Core Initial Configuration
-
-![Server Core](screenshots/Server-core-int-config.png)
-
-## Step 2: Initial Server Core Configuration
-
-Configured the Windows Server Core instance through PowerShell, preparing the system for Active Directory installation.
-
-
-### Active Directory Forest Deployment
-
-![AD Deployment](screenshots/AD-forest-deployment.png)
-
-## Step 4: Create Active Directory Forest
-
-Promoted the server to a Domain Controller and created the securitylab.local forest using PowerShell.
-
-### Domain Controller Validation
-
-![Domain Validation](screenshots/ad-verify)
-
-
-## Step 5: Validate Active Directory Deployment
-
-Verified successful Domain Controller deployment and confirmed forest/domain functionality using PowerShell.
----
-
-## Key Takeaways
-
-This lab provided hands-on experience deploying and administering a cloud-hosted Active Directory environment. By leveraging Server Core and PowerShell automation, the project reinforced infrastructure-as-code concepts, administrative scripting, and enterprise identity management practices commonly used in modern IT environments.
-
----
-
-## Future Enhancements
-
-* Group Policy Object (GPO) Management
-* Security Group Administration
-* Domain-Joined Client Workstations
-* Password Policy Enforcement
-* Remote Administration Tools
-* PowerShell User Lifecycle Automation
-* Active Directory Auditing and Monitoring
+![Step 5 - Domain Controller Operational State](screenshots/step-5.png)
