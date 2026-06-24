@@ -49,22 +49,6 @@ The objective was to simulate a foundational enterprise identity infrastructure 
 
 Created and configured a Windows Server 2022 virtual machine in Microsoft Azure. The VM was deployed using a free-tier eligible size and configured for Remote Desktop access.
 
-**Screenshot:**
-
-[Step 1 Screenshot]
-
----
-
-## 2. Virtual Machine Deployment Verification
-
-Validated successful deployment of the Azure virtual machine and confirmed resource creation within the Azure Portal.
-
-# Screenshots
-
-## 1. Azure Virtual Machine Configuration
-
-Created and configured a Windows Server 2022 virtual machine in Microsoft Azure. The VM was deployed using a free-tier eligible size and configured for Remote Desktop access.
-
 ![Step 1 - Azure Virtual Machine Configuration](screenshots/Step-1.png)
 
 ---
@@ -107,18 +91,6 @@ Get-ADForest
 Confirmed the server was successfully operating as the domain controller for the newly created Active Directory forest.
 
 ![Step 5 - Domain Controller Operational State](screenshots/Step-5.png)
----
-
-## Future Enhancements
-
-- Create Organizational Units (OUs)
-- Automate user provisioning via PowerShell
-- Implement Group Policy Objects (GPOs)
-- Deploy additional domain-joined client systems
-- Configure DNS and DHCP services
-- Expand into Azure Entra ID integration
-
----
 
 ## Author
 
