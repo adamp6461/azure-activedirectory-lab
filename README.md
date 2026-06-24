@@ -1,20 +1,25 @@
 # Azure Active Directory Lab
 
-## Overview
+## Project Overview
 
-This project demonstrates the deployment and configuration of a Windows Server Active Directory environment hosted in Microsoft Azure. The lab includes virtual machine provisioning, Active Directory Domain Services (AD DS) installation, domain controller promotion, organizational unit creation, and Active Directory validation.
+This project demonstrates the deployment and configuration of a Windows Server 2022 Domain Controller in Microsoft Azure. The lab includes virtual machine provisioning, Active Directory Domain Services (AD DS) installation, domain controller promotion, and validation of a functional Active Directory environment using PowerShell.
 
-The objective was to simulate a foundational enterprise identity infrastructure using cloud-hosted resources and PowerShell administration.
+## Business Scenario
 
----
+This lab simulates deploying a new Active Directory environment for a small organization using Microsoft Azure. The goal was to create a centralized identity management solution that could support user authentication, resource access control, and future domain administration tasks.
 
-## Technologies Used
+## Skills Demonstrated
 
 - Microsoft Azure
-- Windows Server 2022 Datacenter
+- Windows Server 2022
 - Active Directory Domain Services (AD DS)
 - PowerShell
-- Remote Desktop Protocol (RDP)
+- Remote Desktop Services
+- Domain Controller Deployment
+- Identity and Access Management
+- Systems Administration
+- Infrastructure Documentation
+
 
 ---
 
