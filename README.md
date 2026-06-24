@@ -97,6 +97,17 @@ Confirmed the server was successfully operating as the domain controller for the
 
 ![Step 5 - Domain Controller Operational State](screenshots/Step-5.png)
 
+## MITRE ATT&CK References
+
+The following MITRE ATT&CK techniques provide context for identity management activities demonstrated during this project.
+
+| Technique | ID | Relation to Lab |
+|-----------|----|-----------------|
+| Create Account | T1136 | Demonstrated by creating and managing Active Directory user accounts. |
+| Account Discovery | T1087 | Organizational Units (OUs), users, and groups were created and reviewed as part of Active Directory administration. |
+
+**Note:** This project demonstrates legitimate Windows administration tasks performed in a controlled lab environment. The listed ATT&CK techniques are included for defensive analysis and contextual understanding.
+
 ## Author
 
 **Adam Powell**
