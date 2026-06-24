@@ -4,7 +4,7 @@
 
 Created and configured a Windows Server 2022 virtual machine in Microsoft Azure. The VM was deployed using a free-tier eligible size and configured for Remote Desktop access.
 
-![Step 1 - Azure Virtual Machine Configuration](screenshots/step-1.png)
+![Step 1 - Azure Virtual Machine Configuration](screenshots/Step-1.png)
 
 ---
 
@@ -12,7 +12,7 @@ Created and configured a Windows Server 2022 virtual machine in Microsoft Azure.
 
 Validated successful deployment of the Azure virtual machine and confirmed resource creation within the Azure Portal.
 
-![Step 2 - VM Deployment Verification](screenshots/step-2.png)
+![Step 2 - VM Deployment Verification](screenshots/Step-2.png)
 
 ---
 
@@ -25,7 +25,7 @@ Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 Install-ADDSForest -DomainName "securitylab.local"
 ```
 
-![Step 3 - AD DS Installation](screenshots/step-3.png)
+![Step 3 - AD DS Installation](screenshots/Step-3.png)
 
 ---
 
@@ -37,7 +37,7 @@ Verified successful domain controller promotion and Active Directory functionali
 Get-ADForest
 ```
 
-![Step 4 - Active Directory Validation](screenshots/step-4.png)
+![Step 4 - Active Directory Validation](screenshots/Step-4.png)
 
 ---
 
@@ -45,4 +45,4 @@ Get-ADForest
 
 Confirmed the server was successfully operating as the domain controller for the newly created Active Directory forest.
 
-![Step 5 - Domain Controller Operational State](screenshots/step-5.png)
+![Step 5 - Domain Controller Operational State](screenshots/Step-5.png)
