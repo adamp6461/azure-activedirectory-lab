@@ -10,21 +10,6 @@ This lab simulates deploying a new Active Directory environment for a small orga
 
 ## Skills Demonstrated
 
-- Microsoft Azure
-- Windows Server 2022
-- Active Directory Domain Services (AD DS)
-- PowerShell
-- Remote Desktop Services
-- Domain Controller Deployment
-- Identity and Access Management
-- Systems Administration
-- Infrastructure Documentation
-
-
----
-
-## Skills Demonstrated
-
 - Azure Virtual Machine Deployment
 - Windows Server Administration
 - Active Directory Domain Services Installation
